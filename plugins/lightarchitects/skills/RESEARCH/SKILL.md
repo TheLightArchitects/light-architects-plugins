@@ -1,81 +1,49 @@
 ---
 name: RESEARCH
-description: "Multi-source investigation pipeline via SQUAD. Formulates the research
-  question, selects sources, checks helix for prior work, then delegates to SQUAD
-  research. Equivalent to the full QUANTUM investigation cycle + SOUL helix context +
-  EVA creative synthesis. Use when the user says '/research', 'research X', 'investigate
-  X', 'how does X work', 'deep dive into X'. For runtime issues, use /observe instead."
+description: "Research domain entry point — interactive menu for systematic investigation,
+  risk analysis, targeted research, and codebase orientation. Use when you need to
+  investigate an unknown, assess a risk, research prior art, or orient in a new area.
+  Triggers on: 'research', 'investigate', 'find out', 'prior art', 'how does X work',
+  'is this safe', 'what are the risks', 'trace the root cause', 'evidence'."
 user-invocable: true
-version: 2.0.0
 context: root
 ---
 
-# /RESEARCH — Multi-Source Investigation Pipeline
+# /RESEARCH — Research & Investigation Domain
 
-> Thin wrapper: query formulation + helix check + source selection → SQUAD research.
+Systematic investigation, risk analysis, targeted research, and knowledge discovery.
+Select the workflow that matches your research task.
 
-## When to Use
-
-- User needs to understand how something works (library, API, protocol, design decision)
-- User wants to investigate a codebase pattern or prior art
-- User says `/research`, "research X", "investigate", "how does X work"
-- Before a BUILD when the domain is unfamiliar
-
-## Accepted Flags
-
-None. `/RESEARCH` accepts only the topic argument.
-
-Rejected flags (return error + guidance): `--then`, `--watch`, `--drain`, `--fix`, `--research`.
+## Workflow Selection (HITL)
 
 ```
-ERROR: /RESEARCH does not accept {flag}.
-/RESEARCH has no modifier flags. Use /SQUAD directly for pipeline control:
-  /SQUAD research "topic"
+AskUserQuestion:
+  question: "What research task do you need?"
+  header: "Research"
+  options:
+    - label: "Systematic investigation"
+      description: "Full evidence-first investigation cycle: scan → sweep → trace →
+        probe → theorize → verify → close. Use for bug tracing, root-cause analysis,
+        hypothesis testing, and forensic research. → /INVESTIGATE"
+    - label: "Risk analysis"
+      description: "Blast-radius scoring per change — dependency CVE exposure, prior
+        incident lookup, and [R] gate evaluation. Fails hard on CRITICAL blast surface.
+        → /RISK-ANALYSIS"
+    - label: "Prior art & dependency research"
+      description: "Structured prior art survey — Context7 library docs, web sources,
+        academic papers, dependency audit, and evidence-chain with confidence tiers
+        (VERIFIED / MULTI-SOURCE / SINGLE-SOURCE / INFERRED). → /INVESTIGATE"
+    - label: "Codebase orientation"
+      description: "Rapid orientation in an unfamiliar codebase or project area —
+        architecture survey, entry points, key patterns, and a developer brief.
+        → /ONBOARD"
 ```
 
-## Step 1: Argument Validation (SAFEGUARD #24)
+**Route:**
+- **Systematic investigation** → invoke `Skill: quantum/INVESTIGATE`
+- **Risk analysis** → invoke `Skill: RISK-ANALYSIS`
+- **Prior art & dependency research** → invoke `Skill: quantum/INVESTIGATE`
+- **Codebase orientation** → invoke `Skill: ONBOARD`
 
-Validate the topic argument: `^[a-zA-Z0-9_/. -]+$`. Reject SQUAD control flags and shell metacharacters.
-
-## Step 2: Query Formulation
-
-Before invoking SQUAD, sharpen the research question:
-
-- What is the specific question? (narrow "how does X work" to "what is X's behavior when Y")
-- Are there sub-questions that need parallel investigation?
-- Which sources are most likely authoritative? (code, docs, web, helix)
-
-## Step 3: Prior Work Check
-
-Check SOUL helix for existing research on the topic before launching full investigation:
-
-```
-mcp__plugin_lightarchitects_lightarchitects__tools sibling:"soul" action:"search" query:"<topic>"
-```
-
-If prior research is found, present the helix entries and ask:
-- "Build on existing findings?" — continue with SQUAD using the prior context
-- "Start fresh?" — proceed with a clean investigation
-
-## Step 4: SQUAD Invocation
-
-```
-/SQUAD research "<topic>"
-```
-
-No HITL write-path disclosure needed — the research preset has no write operations.
-
-SQUAD agents in the `research` preset run the full QUANTUM investigation cycle (SCAN→SWEEP→TRACE→PROBE→THEORIZE→VERIFY→CLOSE) across Context7 docs, Firecrawl web, HuggingFace papers, GitHub issues, and the SOUL helix. EVA adds creative pattern recognition and cross-domain synthesis. All claims cite an evidence tier (VERIFIED / MULTI-SOURCE / SINGLE-SOURCE / INFERRED). Full cycle instructions are in `references/presets.md`.
-
-## Contract Canon Integration (Cookbook §82)
-
-Governed by `agent.skill.research`. Adds `standards/canon/contracts/` as a prior-art corpus before drafting new contracts: scans existing kinds + per-kind exemplars to identify reusable shape patterns. Each citation has `evidence_tier`; contract refs in citations carry `contract_id`. Emits `skill.research.invoke` span with `contract_prior_art_count` metadata. No `status_per_provider` mutations.
-
-## Graceful Degradation
-
-If SQUAD is unavailable:
-
-1. QUANTUM research: `mcp__plugin_lightarchitects_lightarchitects__tools` with `sibling: "quantum"` action:`research` query:`"<topic>"`
-2. Skip EVA creative synthesis and SOUL helix context enrichment
-
-Report: "Running QUANTUM-only research."
+**Also available in this domain:** `/SECURE` (security-focused research) ·
+`/REFLECT` (extract and preserve research findings as decisions)
