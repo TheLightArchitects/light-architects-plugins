@@ -1,6 +1,7 @@
 ---
 name: FETCH
-description: "Knowledge & Strategy domain context. Research scope classification,
+description: "Documentation fetcher — knowledge retrieval, source selection, decision-factor analysis, and trade-off evaluation. Also known as: FETCH.
+  Knowledge & Strategy domain context. Research scope classification,
   documentation source selection, decision factor analysis, and trade-off evaluation.
   C0RS0 executes with corsoTools action fetch (includes knowledge graph queries, formerly query_knowledge)."
 user-invocable: false

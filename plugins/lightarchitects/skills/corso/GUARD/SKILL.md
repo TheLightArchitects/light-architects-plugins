@@ -1,6 +1,7 @@
 ---
 name: GUARD
-description: "Security & Deployment domain context. Dual-scan: CORSO defensive compliance (4,997
+description: "Security gate — static analysis, vulnerability scanning, and supply-chain audit. Also known as: GUARD.
+  Security & Deployment domain context. Dual-scan: CORSO defensive compliance (4,997
   vulnerability patterns, supply chain audit) runs in parallel with SERAPH adversarial red team
   (trust boundary analysis, exploit chains). Threat model injection, language-specific threat
   detection, deploy gate enforcement. Combined verdict from both scans."

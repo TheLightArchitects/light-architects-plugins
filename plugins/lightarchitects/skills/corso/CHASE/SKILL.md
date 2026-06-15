@@ -1,6 +1,7 @@
 ---
 name: CHASE
-description: "Testing, Performance & Ops domain context. Test strategy inference,
+description: "Performance profiler — test strategy inference, bottleneck detection, metrics selection, and infrastructure analysis. Also known as: CHASE.
+  Testing, Performance & Ops domain context. Test strategy inference,
   bottleneck detection, metrics selection, infrastructure analysis, and coverage
   enforcement. C0RS0 executes with corsoTools action chase."
 user-invocable: false

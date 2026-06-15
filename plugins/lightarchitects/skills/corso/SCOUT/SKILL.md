@@ -1,6 +1,7 @@
 ---
 name: SCOUT
-description: "Internal phase 1 of the C0RS0 Pack Build Cycle. Triages complexity,
+description: "Codebase explorer — complexity triage, domain classification, requirements gathering, and build-plan initialization. Also known as: SCOUT.
+  Internal phase 1 of the C0RS0 Pack Build Cycle. Triages complexity,
   classifies domain, gathers requirements through HITL gates, and generates
   gold-standard plans. Initializes MANIFEST.yaml for pipeline state tracking.
   Invoked by /CORSO — not a standalone entry point."

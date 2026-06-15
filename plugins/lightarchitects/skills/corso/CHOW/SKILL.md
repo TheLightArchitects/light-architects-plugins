@@ -1,6 +1,7 @@
 ---
 name: CHOW
-description: "Code & Architecture analysis domain. Coding standards, quality metrics, code
+description: "Architecture reviewer — code quality analysis, architecture style matching, coding-standards enforcement, and code smell detection. Also known as: CHOW.
+  Code & Architecture analysis domain. Coding standards, quality metrics, code
   smell detection, architecture style matching, and language-specific patterns. C0RS0
   executes with corsoTools action chow."
 user-invocable: false

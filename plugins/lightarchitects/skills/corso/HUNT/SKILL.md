@@ -1,6 +1,7 @@
 ---
 name: HUNT
-description: "Internal phase 6 of the C0RS0 Pack Build Cycle. Accepts approved plan
+description: "Implementation delivery agent — plan execution with phase gates, quality enforcement, feedback loops, and session recovery. Also known as: HUNT.
+  Internal phase 6 of the C0RS0 Pack Build Cycle. Accepts approved plan
   files, loads MANIFEST state, executes phases with HITL phase gates and feedback
   loops, enforces quality gates, and tracks progress via scratchpad. Supports session
   recovery and kill switch. Invoked by /CORSO — not a standalone entry point."

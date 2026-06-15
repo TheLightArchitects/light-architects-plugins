@@ -1,6 +1,7 @@
 ---
 name: SNIFF
-description: "Code & Architecture analysis domain. Coding standards, quality metrics, code
+description: "Threat modeler — architecture risk analysis, code review, and threat surface identification. Also known as: SNIFF.
+  Code & Architecture analysis domain. Coding standards, quality metrics, code
   smell detection, architecture style matching, and language-specific patterns. C0RS0
   executes with corsoTools action code_review."
 user-invocable: false
