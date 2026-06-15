@@ -1,0 +1,9 @@
+{
+  "name": "lightarchitects",
+  "version": "1.0.0",
+  "description": "Multi-agent engineering platform — routes tasks to the right specialist agent and coordinates workflows across code quality, security, research, observability, and delivery.",
+  "author": {
+    "name": "Light Architects",
+    "email": "support@lightarchitects.io"
+  }
+}

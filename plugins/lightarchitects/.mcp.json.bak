@@ -1,0 +1,49 @@
+{
+  "mcpServers": {
+    "corso": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/corso",
+      "env": {
+        "RUST_LOG": "info",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}"
+      }
+    },
+    "eva": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/eva",
+      "env": {
+        "RUST_LOG": "info",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}"
+      }
+    },
+    "soul": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/soul",
+      "env": {
+        "RUST_LOG": "info",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}",
+        "SOUL_ALLOW_WRITE": "true"
+      }
+    },
+    "quantum": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/quantum",
+      "env": {
+        "RUST_LOG": "info",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
+      }
+    },
+    "seraph": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/seraph",
+      "env": {
+        "RUST_LOG": "info",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}"
+      }
+    },
+    "ayin": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/ayin",
+      "env": {
+        "RUST_LOG": "info"
+      }
+    }
+  }
+}
