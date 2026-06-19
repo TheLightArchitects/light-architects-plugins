@@ -154,7 +154,7 @@ Then re-runs `make contract-gate` to confirm the corpus still validates. This is
 For each contract with a `conformance_test:` block touching the diff scope:
 
 1. Resolve `given:` precondition (env vars, fixture files)
-2. Execute `when:` action (via /webshell HTTP probe / cargo test target / playwright spec)
+2. Execute `when:` action (via /lightspace HTTP probe / cargo test target / playwright spec)
 3. Verify each `then[].assertion` — span_witness via AYIN, filesystem_witness via Read
 4. Record evidence_tier per assertion
 5. Update `status_per_provider.<provider>.result` if all assertions VERIFIED
@@ -179,4 +179,4 @@ If the Oracle module / `prove` action is unavailable:
 
 - `/CODE-VERIFY` automatically invokes `/VERIFY` when annotated functions are detected
 - CORSO alpha agent checks `/VERIFY` results at phase gates
-- Supervisor alerts surface UNPROVEN findings with counterexamples in the webshell
+- Supervisor alerts surface UNPROVEN findings with counterexamples in LightSpace
